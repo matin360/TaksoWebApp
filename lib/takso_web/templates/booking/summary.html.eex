@@ -1,0 +1,17 @@
+<table>
+    <thead>
+        <th>Taxi</th>
+        <th>Accepted requests</th>
+    </thead>
+    <tr>
+
+    </tr>
+    <%= for {name, count} <- @tuples do %>
+    <tr>
+        <td><%= name %></td>
+        <td><%= count %></td>
+    </tr>
+<% end %>
+</table>
+
+<span><%= link "Back", to: Routes.booking_path(@conn, :index) %></span>

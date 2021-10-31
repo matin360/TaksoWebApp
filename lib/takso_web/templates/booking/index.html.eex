@@ -1,0 +1,26 @@
+<h2>Listing bookings</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Pickup address</th>
+      <th>Drop off address</th>
+      <th>Distance</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for booking <- @bookings do %>
+    <tr>
+      <td><%= booking.pickup_address %></td>
+      <td><%= booking.dropoff_address %></td>
+      <td><%= booking.distance %></td>
+      <td><%= booking.status %></td>
+      <td class="text-right">
+        <span><%= link "Info", to: Routes.booking_path(@conn, :show, booking), class: "btn btn-default btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

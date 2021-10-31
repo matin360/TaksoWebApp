@@ -1,0 +1,42 @@
+<h2>Booking info</h2>
+
+<ul>
+
+  <li>
+    <strong>Pickup address:</strong>
+    <%= @bookingDetails.pickup_address %>
+  </li>
+
+  <li>
+    <strong>Drop off address:</strong>
+    <%= @bookingDetails.dropoff_address %>
+  </li>
+
+  <li>
+    <strong>Distance:</strong>
+    <%= @bookingDetails.distance %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @bookingDetails.status %>
+  </li>
+
+  <li>
+    <strong>Driver's full name:</strong>
+    <%= @bookingDetails.driver_fullname %>
+  </li>
+
+  <li>
+    <strong>Number of completed rides:</strong>
+    <%= @bookingDetails.completed_rides_num %>
+  </li>
+
+  <li>
+    <strong>Cost per km:</strong>
+    <%= @bookingDetails.cost_per_km %>
+  </li>
+
+</ul>
+
+<span><%= link "Back", to: Routes.booking_path(@conn, :index) %></span>

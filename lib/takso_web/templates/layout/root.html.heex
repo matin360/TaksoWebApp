@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= csrf_meta_tag() %>
+    <%= live_title_tag assigns[:page_title] || "Takso", suffix: " · Phoenix Framework" %>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+  </head>
+  <body>
+      <header class="header">
+        <ol class="breadcrumb pull-right">
+<%= if @conn.assigns[:current_user] do %>
+          <li>Hello <%= @conn.assigns[:current_user].email %></li>
+             <%= if @conn.assigns[:current_user].is_customer do %>
+                <li><%= link "Book a Taxi!", to: Routes.booking_path(@conn, :new) %></li>
+              <% else %>
+                  <li><%= link "My rides", to: Routes.ride_path(@conn, :index) %></li>
+              <% end %> 
+          <li><%= link "Log out", to: Routes.session_path(@conn, :delete, @conn.assigns[:current_user]), method: "delete" %></li>
+           
+<% else %>
+          <li><%= link "Log in", to: Routes.session_path(@conn, :new) %></li>
+<% end %>
+        </ol>
+        <span class="logo"></span>
+      </header>
+    <%= @inner_content %>
+  </body>
+</html>

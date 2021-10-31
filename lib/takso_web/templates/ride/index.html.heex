@@ -1,0 +1,27 @@
+<h2>Show assigned rides</h2>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Pickup address</th>
+      <th>Dropoff address</th>
+      <th>Allocation status</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for detail <- @details do %>
+    <tr>
+      <td><%= detail.pickup_address %></td>
+      <td><%= detail.dropoff_address %></td>
+      <td><%= detail.status %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: Routes.ride_path(@conn, :show, detail), class: "btn btn-default btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
